@@ -1,0 +1,56 @@
+name: Build and Distribute Android - dev
+
+on:
+  # push:
+  #   branches:
+  #     - develop
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    name: Build and Distribute APK
+    runs-on: ubuntu-latest
+    env:
+      GOOGLE_APPLICATION_CREDENTIALS: google-application-credentials.json
+      FIREBASE_APP_ID: "YOUR_FIREBASE_APP_ID"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Firebase CLI
+        run: curl -sL https://firebase.tools | bash
+
+      - name: Prepare Google Application Credentials
+        shell: bash
+        run: |
+          echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY_BASE64 }}" | base64 --decode > "google-application-credentials.json"
+
+      - name: Set up Flutter
+        uses: flutter-actions/setup-flutter@v3
+        with:
+          channel: stable
+          version: 3.35.7
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: oracle
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run build_runner
+        run: |
+          flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Build apk
+        run: |
+          flutter build apk --flavor dev --dart-define-from-file .env.dev
+
+      - name: Upload apk to Firebase
+        run: |
+          firebase appdistribution:distribute build/app/outputs/flutter-apk/app-dev-release.apk \
+              --app $FIREBASE_APP_ID \
+              --groups "Tester";
