@@ -6,6 +6,7 @@ import 'package:app_template/ui/screens/home/cubit/home_screen_cubit.dart';
 import 'package:app_template/ui/screens/home/home_screen.dart';
 import 'package:app_template/ui/screens/settings/cubit/settings_screen_cubit.dart';
 import 'package:app_template/ui/screens/settings/settings_screen.dart';
+import 'package:app_template/ui/screens/short_video/short_video_screen.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -73,7 +74,11 @@ class _DashboardScreenViewState extends State<DashboardScreenView> {
       builder: (context, selectedTab) {
         return IndexedStack(
           index: selectedTab.index,
-          children: const [HomeScreenView(), SettingsScreenView()],
+          children: const [
+            HomeScreenView(),
+            ShortVideoScreen(),
+            SettingsScreenView(),
+          ],
         );
       },
     );

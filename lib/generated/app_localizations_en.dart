@@ -29,5 +29,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dashboard_screen_tab_home => 'Home';
 
   @override
+  String get dashboard_screen_tab_shorts => 'Shorts';
+
+  @override
   String get dashboard_screen_tab_settings => 'Settings';
 }

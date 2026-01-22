@@ -130,6 +130,12 @@ abstract class AppLocalizations {
   /// **'Home'**
   String get dashboard_screen_tab_home;
 
+  /// No description provided for @dashboard_screen_tab_shorts.
+  ///
+  /// In en, this message translates to:
+  /// **'Shorts'**
+  String get dashboard_screen_tab_shorts;
+
   /// No description provided for @dashboard_screen_tab_settings.
   ///
   /// In en, this message translates to:

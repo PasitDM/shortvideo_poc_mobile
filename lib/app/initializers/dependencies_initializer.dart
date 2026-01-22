@@ -3,14 +3,17 @@ import 'package:app_template/app/initializers/secure_storage_initializer.dart';
 import 'package:app_template/data/data_sources/auth_remote_data_source.dart';
 import 'package:app_template/data/data_sources/store_version_remote_data_source.dart';
 import 'package:app_template/data/data_sources/user_remote_data_source.dart';
+import 'package:app_template/data/data_sources/video_remote_data_source.dart';
 import 'package:app_template/data/repositories/auth_repository_impl.dart';
 import 'package:app_template/data/repositories/store_version_repository_impl.dart';
 import 'package:app_template/data/repositories/user_repository_impl.dart';
+import 'package:app_template/data/repositories/video_repository_impl.dart';
 import 'package:app_template/data/storages/app_storage_impl.dart';
 import 'package:app_template/data/storages/token_vault_impl.dart';
 import 'package:app_template/domain/repositories/auth_repository.dart';
 import 'package:app_template/domain/repositories/store_version_repository.dart';
 import 'package:app_template/domain/repositories/user_repository.dart';
+import 'package:app_template/domain/repositories/video_repository.dart';
 import 'package:app_template/domain/storages/app_storage.dart';
 import 'package:app_template/domain/storages/secure_storage.dart';
 import 'package:app_template/domain/storages/token_vault.dart';
@@ -65,6 +68,9 @@ Future<void> initializeDependencies() async {
   );
   getIt.registerLazySingleton<UserRepository>(
     () => UserRepositoryImpl(UserRemoteDataSource(apiClient)),
+  );
+  getIt.registerLazySingleton<VideoRepository>(
+    () => VideoRepositoryImpl(VideoRemoteDataSource(apiClient)),
   );
 
   /// UseCases
