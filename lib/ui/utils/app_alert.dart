@@ -1,11 +1,12 @@
 import 'dart:io';
 
-import 'package:app_template/domain/core/app_error.dart';
-import 'package:app_template/ui/extensions/build_context_extension.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../domain/core/app_error.dart';
+import '../extensions/build_context_extension.dart';
 
 class AppAlert {
   AppAlert._();

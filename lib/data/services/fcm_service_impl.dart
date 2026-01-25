@@ -1,13 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:app_template/common/logger.dart';
-import 'package:app_template/data/enums/fcm_target_type.dart';
-import 'package:app_template/data/models/fcm_payload.dart';
-import 'package:app_template/domain/services/fcm_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+import '../../common/logger.dart';
+import '../../domain/services/fcm_service.dart';
+import '../enums/fcm_target_type.dart';
+import '../models/fcm_payload.dart';
 
 final fcmNotifier = ValueNotifier<FcmPayload?>(null);
 

@@ -1,6 +1,6 @@
-import 'package:app_template/domain/core/result.dart';
-import 'package:app_template/domain/repositories/user_repository.dart';
-import 'package:app_template/ui/cubits/session/session_cubit.dart';
+import '../../ui/cubits/session/session_cubit.dart';
+import '../core/result.dart';
+import '../repositories/user_repository.dart';
 
 class GetUserUseCase {
   final SessionCubit sessionCubit;

@@ -1,12 +1,13 @@
-import 'package:app_template/app/initializers/dependencies_initializer.dart';
-import 'package:app_template/ui/screens/dashboard/cubit/dashboard_screen_cubit.dart';
-import 'package:app_template/ui/screens/dashboard/cubit/dashboard_screen_state.dart';
-import 'package:app_template/ui/screens/dashboard/dashboard_screen_tab.dart';
-import 'package:app_template/ui/screens/short_video/cubit/short_video_screen_cubit.dart';
-import 'package:app_template/ui/screens/short_video/cubit/short_video_screen_state.dart';
-import 'package:app_template/ui/screens/short_video/widgets/video_player_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../app/initializers/dependencies_initializer.dart';
+import '../dashboard/cubit/dashboard_screen_cubit.dart';
+import '../dashboard/cubit/dashboard_screen_state.dart';
+import '../dashboard/dashboard_screen_tab.dart';
+import 'cubit/short_video_screen_cubit.dart';
+import 'cubit/short_video_screen_state.dart';
+import 'widgets/video_player_item.dart';
 
 class ShortVideoScreen extends StatelessWidget {
   final int initialIndex;

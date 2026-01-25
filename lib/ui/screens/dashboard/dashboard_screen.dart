@@ -1,16 +1,17 @@
-import 'package:app_template/ui/global_widgets/loading_overlay.dart';
-import 'package:app_template/ui/screens/dashboard/cubit/dashboard_screen_cubit.dart';
-import 'package:app_template/ui/screens/dashboard/cubit/dashboard_screen_state.dart';
-import 'package:app_template/ui/screens/dashboard/dashboard_screen_tab.dart';
-import 'package:app_template/ui/screens/home/cubit/home_screen_cubit.dart';
-import 'package:app_template/ui/screens/home/home_screen.dart';
-import 'package:app_template/ui/screens/settings/cubit/settings_screen_cubit.dart';
-import 'package:app_template/ui/screens/settings/settings_screen.dart';
-import 'package:app_template/ui/screens/short_video/short_video_screen.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../global_widgets/loading_overlay.dart';
+import '../home/cubit/home_screen_cubit.dart';
+import '../home/home_screen.dart';
+import '../settings/cubit/settings_screen_cubit.dart';
+import '../settings/settings_screen.dart';
+import '../short_video/short_video_screen.dart';
+import 'cubit/dashboard_screen_cubit.dart';
+import 'cubit/dashboard_screen_state.dart';
+import 'dashboard_screen_tab.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});

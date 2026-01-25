@@ -1,12 +1,13 @@
-import 'package:app_template/app/initializers/dependencies_initializer.dart';
-import 'package:app_template/app/router/app_routes.dart';
-import 'package:app_template/ui/global_widgets/loading_overlay.dart';
-import 'package:app_template/ui/screens/login/cubit/login_screen_cubit.dart';
-import 'package:app_template/ui/screens/login/cubit/login_screen_state.dart';
-import 'package:app_template/ui/utils/app_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../app/initializers/dependencies_initializer.dart';
+import '../../../app/router/app_routes.dart';
+import '../../global_widgets/loading_overlay.dart';
+import '../../utils/app_alert.dart';
+import 'cubit/login_screen_cubit.dart';
+import 'cubit/login_screen_state.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

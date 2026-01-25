@@ -1,5 +1,6 @@
-import 'package:app_template/domain/api_client/api_client.dart';
 import 'package:dio/dio.dart';
+
+import '../../domain/api_client/api_client.dart';
 
 class ApiClientImpl implements ApiClient {
   final Dio _dio;

@@ -1,5 +1,6 @@
-import 'package:app_template/data/models/user.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../data/models/user.dart';
 
 class SessionState extends Equatable {
   final User? user;

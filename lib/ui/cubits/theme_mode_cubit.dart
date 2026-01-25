@@ -1,7 +1,8 @@
-import 'package:app_template/domain/storages/app_storage.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../domain/storages/app_storage.dart';
 
 class ThemeModeCubit extends Cubit<ThemeMode> {
   final AppStorage _appStorage;

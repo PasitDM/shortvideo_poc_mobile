@@ -1,6 +1,7 @@
-import 'package:app_template/data/models/video_model.dart';
-import 'package:app_template/domain/core/app_error.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../../data/models/video_model.dart';
+import '../../../../domain/core/app_error.dart';
 
 enum ShortVideoScreenStatus {
   initial,

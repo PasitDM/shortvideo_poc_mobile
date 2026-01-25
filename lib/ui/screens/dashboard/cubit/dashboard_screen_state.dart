@@ -1,5 +1,6 @@
-import 'package:app_template/ui/screens/dashboard/dashboard_screen_tab.dart';
 import 'package:equatable/equatable.dart';
+
+import '../dashboard_screen_tab.dart';
 
 class DashboardScreenState extends Equatable {
   final DashboardScreenTab selectedTab;

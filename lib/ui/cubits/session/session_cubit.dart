@@ -1,6 +1,7 @@
-import 'package:app_template/data/models/user.dart';
-import 'package:app_template/ui/cubits/session/session_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../data/models/user.dart';
+import 'session_state.dart';
 
 class SessionCubit extends Cubit<SessionState> {
   SessionCubit() : super(const SessionState());

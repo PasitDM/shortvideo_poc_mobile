@@ -1,14 +1,15 @@
-import 'package:app_template/app/initializers/dependencies_initializer.dart';
-import 'package:app_template/app/router/app_router.dart';
-import 'package:app_template/generated/app_localizations.dart';
-import 'package:app_template/ui/cubits/app_language_cubit.dart';
-import 'package:app_template/ui/cubits/session/session_cubit.dart';
-import 'package:app_template/ui/cubits/theme_mode_cubit.dart';
-import 'package:app_template/ui/styles/app_theme.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'app/initializers/dependencies_initializer.dart';
+import 'app/router/app_router.dart';
+import 'generated/app_localizations.dart';
+import 'ui/cubits/app_language_cubit.dart';
+import 'ui/cubits/session/session_cubit.dart';
+import 'ui/cubits/theme_mode_cubit.dart';
+import 'ui/styles/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

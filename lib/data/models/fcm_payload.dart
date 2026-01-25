@@ -1,7 +1,8 @@
-import 'package:app_template/common/logger.dart';
-import 'package:app_template/data/enums/fcm_target_type.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../../common/logger.dart';
+import '../enums/fcm_target_type.dart';
 
 part 'fcm_payload.g.dart';
 

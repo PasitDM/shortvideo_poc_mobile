@@ -1,7 +1,8 @@
-import 'package:app_template/domain/core/app_error.dart';
-import 'package:app_template/domain/repositories/video_repository.dart';
-import 'package:app_template/ui/screens/short_video/cubit/short_video_screen_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../domain/core/app_error.dart';
+import '../../../../domain/repositories/video_repository.dart';
+import 'short_video_screen_state.dart';
 
 class ShortVideoScreenCubit extends Cubit<ShortVideoScreenState> {
   final VideoRepository _videoRepository;

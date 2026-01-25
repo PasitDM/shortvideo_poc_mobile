@@ -1,9 +1,10 @@
-import 'package:app_template/app/router/app_routes.dart';
-import 'package:app_template/ui/screens/home/cubit/home_screen_cubit.dart';
-import 'package:app_template/ui/screens/home/cubit/home_screen_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../app/router/app_routes.dart';
+import 'cubit/home_screen_cubit.dart';
+import 'cubit/home_screen_state.dart';
 
 class HomeScreenView extends StatefulWidget {
   const HomeScreenView({super.key});

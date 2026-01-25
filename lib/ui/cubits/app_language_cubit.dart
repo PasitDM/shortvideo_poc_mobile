@@ -1,9 +1,10 @@
 import 'dart:ui';
 
-import 'package:app_template/common/app_language.dart';
-import 'package:app_template/domain/storages/app_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+
+import '../../common/app_language.dart';
+import '../../domain/storages/app_storage.dart';
 
 class AppLanguageCubit extends Cubit<AppLanguage> {
   final AppStorage _appStorage;

@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'dart:developer' as dev;
 
-import 'package:app_template/domain/storages/app_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../domain/storages/app_storage.dart';
 
 class AppStorageImpl implements AppStorage {
   final SharedPreferences _sharedPrefs;

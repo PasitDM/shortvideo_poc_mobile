@@ -1,6 +1,6 @@
-import 'package:app_template/data/models/auth.dart';
-import 'package:app_template/data/models/requests/login_with_email_request.dart';
-import 'package:app_template/domain/api_client/api_client.dart';
+import '../../domain/api_client/api_client.dart';
+import '../models/auth.dart';
+import '../models/requests/login_with_email_request.dart';
 
 class AuthRemoteDataSource {
   final ApiClient _apiClient;

@@ -1,6 +1,6 @@
-import 'package:app_template/data/data_sources/store_version_remote_data_source.dart';
-import 'package:app_template/data/models/version_status.dart';
-import 'package:app_template/domain/repositories/store_version_repository.dart';
+import '../../domain/repositories/store_version_repository.dart';
+import '../data_sources/store_version_remote_data_source.dart';
+import '../models/version_status.dart';
 
 class StoreVersionRepositoryImpl implements StoreVersionRepository {
   final StoreVersionRemoteDataSource _remote;

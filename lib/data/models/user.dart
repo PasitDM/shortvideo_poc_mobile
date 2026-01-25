@@ -1,6 +1,7 @@
-import 'package:app_template/data/enums/user_gender.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../enums/user_gender.dart';
 
 part 'user.g.dart';
 

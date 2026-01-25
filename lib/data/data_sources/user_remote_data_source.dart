@@ -1,5 +1,5 @@
-import 'package:app_template/data/models/user.dart';
-import 'package:app_template/domain/api_client/api_client.dart';
+import '../../domain/api_client/api_client.dart';
+import '../models/user.dart';
 
 class UserRemoteDataSource {
   final ApiClient _apiClient;

@@ -1,7 +1,8 @@
-import 'package:app_template/ui/screens/product/cubit/product_screen_cubit.dart';
-import 'package:app_template/ui/screens/product/cubit/product_screen_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'cubit/product_screen_cubit.dart';
+import 'cubit/product_screen_state.dart';
 
 class ProductScreen extends StatelessWidget {
   final String? productId;

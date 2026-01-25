@@ -1,9 +1,9 @@
-import 'package:app_template/data/data_sources/auth_remote_data_source.dart';
-import 'package:app_template/data/models/auth.dart';
-import 'package:app_template/data/models/requests/login_with_email_request.dart';
-import 'package:app_template/domain/core/app_error.dart';
-import 'package:app_template/domain/core/result.dart';
-import 'package:app_template/domain/repositories/auth_repository.dart';
+import '../../domain/core/app_error.dart';
+import '../../domain/core/result.dart';
+import '../../domain/repositories/auth_repository.dart';
+import '../data_sources/auth_remote_data_source.dart';
+import '../models/auth.dart';
+import '../models/requests/login_with_email_request.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource _remoteDataSource;

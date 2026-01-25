@@ -1,5 +1,6 @@
-import 'package:app_template/ui/extensions/build_context_extension.dart';
 import 'package:flutter/material.dart';
+
+import '../../extensions/build_context_extension.dart';
 
 enum DashboardScreenTab {
   home,

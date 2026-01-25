@@ -1,11 +1,12 @@
-import 'package:app_template/app/router/app_routes.dart';
-import 'package:app_template/ui/screens/dashboard/dashboard_screen.dart';
-import 'package:app_template/ui/screens/login/login_screen.dart';
-import 'package:app_template/ui/screens/product/product_screen.dart';
-import 'package:app_template/ui/screens/products/products_screen.dart';
-import 'package:app_template/ui/screens/splash/splash_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../ui/screens/dashboard/dashboard_screen.dart';
+import '../../ui/screens/login/login_screen.dart';
+import '../../ui/screens/product/product_screen.dart';
+import '../../ui/screens/products/products_screen.dart';
+import '../../ui/screens/splash/splash_screen.dart';
+import 'app_routes.dart';
 
 class AppRouter {
   AppRouter._();

@@ -1,8 +1,8 @@
-import 'package:app_template/data/data_sources/user_remote_data_source.dart';
-import 'package:app_template/data/models/user.dart';
-import 'package:app_template/domain/core/app_error.dart';
-import 'package:app_template/domain/core/result.dart';
-import 'package:app_template/domain/repositories/user_repository.dart';
+import '../../domain/core/app_error.dart';
+import '../../domain/core/result.dart';
+import '../../domain/repositories/user_repository.dart';
+import '../data_sources/user_remote_data_source.dart';
+import '../models/user.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final UserRemoteDataSource _remoteDataSource;

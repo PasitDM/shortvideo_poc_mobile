@@ -1,5 +1,6 @@
-import 'package:app_template/domain/core/app_error.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../../domain/core/app_error.dart';
 
 enum ProductScreenStatus {
   initial,

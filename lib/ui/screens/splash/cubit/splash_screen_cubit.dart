@@ -1,8 +1,9 @@
-import 'package:app_template/domain/core/result.dart';
-import 'package:app_template/domain/use_cases/splash_use_case.dart';
-import 'package:app_template/ui/cubits/session/session_cubit.dart';
-import 'package:app_template/ui/screens/splash/cubit/splash_screen_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../domain/core/result.dart';
+import '../../../../domain/use_cases/splash_use_case.dart';
+import '../../../cubits/session/session_cubit.dart';
+import 'splash_screen_state.dart';
 
 class SplashScreenCubit extends Cubit<SplashScreenState> {
   final SessionCubit sessionCubit;

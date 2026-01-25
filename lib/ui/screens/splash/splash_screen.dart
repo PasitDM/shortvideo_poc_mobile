@@ -1,15 +1,16 @@
-import 'package:app_template/app/initializers/dependencies_initializer.dart';
-import 'package:app_template/app/router/app_routes.dart';
-import 'package:app_template/common/app_utils.dart';
-import 'package:app_template/domain/use_cases/splash_use_case.dart';
-import 'package:app_template/ui/extensions/build_context_extension.dart';
-import 'package:app_template/ui/screens/splash/cubit/splash_screen_cubit.dart';
-import 'package:app_template/ui/screens/splash/cubit/splash_screen_state.dart';
-import 'package:app_template/ui/utils/app_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../../app/initializers/dependencies_initializer.dart';
+import '../../../app/router/app_routes.dart';
+import '../../../common/app_utils.dart';
+import '../../../domain/use_cases/splash_use_case.dart';
+import '../../extensions/build_context_extension.dart';
+import '../../utils/app_alert.dart';
+import 'cubit/splash_screen_cubit.dart';
+import 'cubit/splash_screen_state.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

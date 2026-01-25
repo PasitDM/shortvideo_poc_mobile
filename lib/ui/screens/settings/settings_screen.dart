@@ -1,11 +1,12 @@
-import 'package:app_template/app/router/app_routes.dart';
-import 'package:app_template/ui/cubits/theme_mode_cubit.dart';
-import 'package:app_template/ui/extensions/build_context_extension.dart';
-import 'package:app_template/ui/screens/settings/cubit/settings_screen_cubit.dart';
-import 'package:app_template/ui/screens/settings/cubit/settings_screen_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../app/router/app_routes.dart';
+import '../../cubits/theme_mode_cubit.dart';
+import '../../extensions/build_context_extension.dart';
+import 'cubit/settings_screen_cubit.dart';
+import 'cubit/settings_screen_state.dart';
 
 class SettingsScreenView extends StatefulWidget {
   const SettingsScreenView({super.key});

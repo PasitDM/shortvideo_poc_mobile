@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:app_template/data/models/version_status.dart';
-import 'package:app_template/domain/api_client/api_client.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+
+import '../../domain/api_client/api_client.dart';
+import '../models/version_status.dart';
 
 class StoreVersionRemoteDataSource {
   final ApiClient _apiClient;

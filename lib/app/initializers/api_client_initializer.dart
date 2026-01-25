@@ -1,12 +1,13 @@
-import 'package:app_template/app/env.dart';
-import 'package:app_template/common/curl_logger.dart';
-import 'package:app_template/data/api_client/api_client_impl.dart';
-import 'package:app_template/domain/api_client/api_client.dart';
-import 'package:app_template/domain/storages/token_vault.dart';
-import 'package:app_template/ui/cubits/app_language_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
+import '../../common/curl_logger.dart';
+import '../../data/api_client/api_client_impl.dart';
+import '../../domain/api_client/api_client.dart';
+import '../../domain/storages/token_vault.dart';
+import '../../ui/cubits/app_language_cubit.dart';
+import '../env.dart';
 
 ApiClient initializeApiClient({
   required TokenVault tokenVault,

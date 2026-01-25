@@ -1,7 +1,8 @@
-import 'package:app_template/ui/screens/products/cubit/products_screen_cubit.dart';
-import 'package:app_template/ui/screens/products/cubit/products_screen_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'cubit/products_screen_cubit.dart';
+import 'cubit/products_screen_state.dart';
 
 class ProductsScreen extends StatelessWidget {
   const ProductsScreen({super.key});

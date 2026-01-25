@@ -1,11 +1,11 @@
-import 'package:app_template/common/logger.dart';
-import 'package:app_template/data/models/user.dart';
-import 'package:app_template/data/models/version_status.dart';
-import 'package:app_template/domain/core/app_error.dart';
-import 'package:app_template/domain/core/result.dart';
-import 'package:app_template/domain/repositories/store_version_repository.dart';
-import 'package:app_template/domain/repositories/user_repository.dart';
-import 'package:app_template/domain/storages/token_vault.dart';
+import '../../common/logger.dart';
+import '../../data/models/user.dart';
+import '../../data/models/version_status.dart';
+import '../core/app_error.dart';
+import '../core/result.dart';
+import '../repositories/store_version_repository.dart';
+import '../repositories/user_repository.dart';
+import '../storages/token_vault.dart';
 
 class SplashScreenUseCase {
   final TokenVault tokenVault;

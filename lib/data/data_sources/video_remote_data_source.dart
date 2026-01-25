@@ -1,5 +1,5 @@
-import 'package:app_template/data/models/video_model.dart';
-import 'package:app_template/domain/api_client/api_client.dart';
+import '../../domain/api_client/api_client.dart';
+import '../models/video_model.dart';
 
 class VideoRemoteDataSource {
   final ApiClient _apiClient;
