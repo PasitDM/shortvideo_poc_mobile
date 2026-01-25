@@ -14,10 +14,18 @@ class HomeScreenView extends StatefulWidget {
 }
 
 class _HomeScreenViewState extends State<HomeScreenView> {
+  int _focusedIndex = 0;
+
   @override
   void initState() {
     super.initState();
     context.read<HomeScreenCubit>().loadVideos();
+  }
+
+  void _onPageChanged(int index) {
+    setState(() {
+      _focusedIndex = index;
+    });
   }
 
   @override
@@ -39,8 +47,12 @@ class _HomeScreenViewState extends State<HomeScreenView> {
           return PageView.builder(
             scrollDirection: Axis.vertical,
             itemCount: state.videos.length,
+            onPageChanged: _onPageChanged,
             itemBuilder: (context, index) {
-              return _VideoPostItem(video: state.videos[index]);
+              return _VideoPostItem(
+                video: state.videos[index],
+                isFocused: index == _focusedIndex,
+              );
             },
           );
         },
@@ -51,19 +63,40 @@ class _HomeScreenViewState extends State<HomeScreenView> {
 
 class _VideoPostItem extends StatefulWidget {
   final VideoModel video;
+  final bool isFocused;
 
-  const _VideoPostItem({required this.video});
+  const _VideoPostItem({
+    required this.video,
+    required this.isFocused,
+  });
 
   @override
   State<_VideoPostItem> createState() => _VideoPostItemState();
 }
 
 class _VideoPostItemState extends State<_VideoPostItem> {
-  late BetterPlayerController _betterPlayerController;
+  BetterPlayerController? _betterPlayerController;
+  bool _isLiked = false;
 
   @override
   void initState() {
     super.initState();
+    if (widget.isFocused) {
+      _initializePlayer(fromInit: true);
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant _VideoPostItem oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.isFocused && !oldWidget.isFocused) {
+      _initializePlayer();
+    } else if (!widget.isFocused && oldWidget.isFocused) {
+      _disposePlayer();
+    }
+  }
+
+  void _initializePlayer({bool fromInit = false}) {
     BetterPlayerConfiguration betterPlayerConfiguration = const BetterPlayerConfiguration(
       aspectRatio: 9 / 16,
       fit: BoxFit.cover,
@@ -78,26 +111,55 @@ class _VideoPostItemState extends State<_VideoPostItem> {
     BetterPlayerDataSource dataSource = BetterPlayerDataSource(
       BetterPlayerDataSourceType.network,
       widget.video.url,
-      cacheConfiguration: const BetterPlayerCacheConfiguration(useCache: true),
+      cacheConfiguration: const BetterPlayerCacheConfiguration(useCache: false),
     );
 
     _betterPlayerController = BetterPlayerController(betterPlayerConfiguration);
-    _betterPlayerController.setupDataSource(dataSource);
+    _betterPlayerController?.setupDataSource(dataSource);
+    if (!fromInit) {
+      setState(() {});
+    }
+  }
+
+  void _disposePlayer({bool fromDispose = false}) {
+    _betterPlayerController?.dispose();
+    _betterPlayerController = null;
+    if (!fromDispose && mounted) {
+      setState(() {});
+    }
   }
 
   @override
   void dispose() {
-    _betterPlayerController.dispose();
+    _disposePlayer(fromDispose: true);
     super.dispose();
+  }
+
+  void _showComments() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => _CommentBottomSheet(),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Video Player
+        // Video Player or Thumbnail
         Positioned.fill(
-          child: BetterPlayer(controller: _betterPlayerController),
+          child: _betterPlayerController != null
+              ? BetterPlayer(controller: _betterPlayerController!)
+              : Container(
+                  color: Colors.black,
+                  child: widget.video.thumbnail.isNotEmpty
+                      ? Image.network(widget.video.thumbnail, fit: BoxFit.cover)
+                      : const Center(
+                          child: Icon(Icons.play_circle_outline, color: Colors.white54, size: 64),
+                        ),
+                ),
         ),
 
         // Gradient Overlay (Bottom)
@@ -120,13 +182,37 @@ class _VideoPostItemState extends State<_VideoPostItem> {
           bottom: 100,
           child: Column(
             children: [
-              _buildActionItem(Icons.favorite, '12.5K', Colors.red),
+              _buildActionItem(
+                icon: _isLiked ? Icons.favorite : Icons.favorite_border,
+                label: '12.5K',
+                color: _isLiked ? Colors.red : Colors.white,
+                onTap: () {
+                  setState(() {
+                    _isLiked = !_isLiked;
+                  });
+                },
+              ),
               const SizedBox(height: 20),
-              _buildActionItem(Icons.comment, '123', Colors.white),
+              _buildActionItem(
+                icon: Icons.comment,
+                label: '123',
+                color: Colors.white,
+                onTap: _showComments,
+              ),
               const SizedBox(height: 20),
-              _buildActionItem(Icons.bookmark, 'Favorites', Colors.white),
+              _buildActionItem(
+                icon: Icons.bookmark,
+                label: 'Favorites',
+                color: Colors.white,
+                onTap: () {},
+              ),
               const SizedBox(height: 20),
-              _buildActionItem(Icons.share, 'Share', Colors.white),
+              _buildActionItem(
+                icon: Icons.share,
+                label: 'Share',
+                color: Colors.white,
+                onTap: () {},
+              ),
               const SizedBox(height: 40),
               _buildvinylDisk(),
             ],
@@ -188,20 +274,37 @@ class _VideoPostItemState extends State<_VideoPostItem> {
             ],
           ),
         ),
+
+        // Progress Bar (Bottom)
+        if (_betterPlayerController != null)
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: _VideoProgressBar(controller: _betterPlayerController!),
+          ),
       ],
     );
   }
 
-  Widget _buildActionItem(IconData icon, String label, Color color) {
-    return Column(
-      children: [
-        Icon(icon, size: 32, color: color),
-        const SizedBox(height: 4),
-        Text(
-          label,
-          style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
-        ),
-      ],
+  Widget _buildActionItem({
+    required IconData icon,
+    required String label,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Icon(icon, size: 32, color: color),
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
+          ),
+        ],
+      ),
     );
   }
 
@@ -221,6 +324,194 @@ class _VideoPostItemState extends State<_VideoPostItem> {
           child: Icon(Icons.music_note, size: 10, color: Colors.white),
         ),
       ),
+    );
+  }
+}
+
+class _VideoProgressBar extends StatefulWidget {
+  final BetterPlayerController controller;
+
+  const _VideoProgressBar({required this.controller});
+
+  @override
+  State<_VideoProgressBar> createState() => _VideoProgressBarState();
+}
+
+class _VideoProgressBarState extends State<_VideoProgressBar> {
+  double _progress = 0.0;
+  VoidCallback? _listener;
+
+  @override
+  void initState() {
+    super.initState();
+    _listener = () {
+      final value = widget.controller.videoPlayerController?.value;
+      final duration = value?.duration?.inMilliseconds ?? 0;
+      if (value != null && value.initialized && duration > 0) {
+        final percent = value.position.inMilliseconds / duration;
+        if (mounted) {
+          setState(() {
+            _progress = percent.clamp(0.0, 1.0);
+          });
+        }
+      }
+    };
+    widget.controller.videoPlayerController?.addListener(_listener!);
+  }
+
+  @override
+  void dispose() {
+    if (_listener != null) {
+      widget.controller.videoPlayerController?.removeListener(_listener!);
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return LinearProgressIndicator(
+      value: _progress,
+      minHeight: 2,
+      backgroundColor: Colors.white24,
+      valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+    );
+  }
+}
+
+class _CommentBottomSheet extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.75,
+      decoration: const BoxDecoration(
+        color: Color(0xFF1E1E1E),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      child: Column(
+        children: [
+          // Header
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const SizedBox(width: 24),
+                const Text(
+                  '123 comments',
+                  style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.close, color: Colors.white),
+                  onPressed: () => Navigator.pop(context),
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                ),
+              ],
+            ),
+          ),
+          const Divider(height: 1, color: Colors.grey),
+
+          // List
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  child: _CommentItem(index: index),
+                );
+              },
+            ),
+          ),
+
+          // Input
+          Container(
+            padding: EdgeInsets.only(
+              left: 16,
+              right: 16,
+              top: 12,
+              bottom: 12 + MediaQuery.of(context).viewInsets.bottom,
+            ),
+            decoration: const BoxDecoration(
+              color: Color(0xFF2C2C2C),
+              border: Border(top: BorderSide(color: Colors.white12)),
+            ),
+            child: const Row(
+              children: [
+                CircleAvatar(
+                  radius: 16,
+                  backgroundColor: Colors.grey,
+                  child: Icon(Icons.person, size: 20, color: Colors.white),
+                ),
+                SizedBox(width: 12),
+                Expanded(
+                  child: TextField(
+                    style: TextStyle(color: Colors.white),
+                    cursorColor: Colors.white,
+                    decoration: InputDecoration(
+                      hintText: 'Add comment...',
+                      hintStyle: TextStyle(color: Colors.white54),
+                      border: InputBorder.none,
+                      isDense: true,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 8),
+                Icon(Icons.send, color: Colors.purple),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CommentItem extends StatelessWidget {
+  final int index;
+
+  const _CommentItem({required this.index});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const CircleAvatar(
+          radius: 16,
+          backgroundColor: Colors.grey,
+          child: Icon(Icons.person, size: 16, color: Colors.white),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'User $index',
+                style: const TextStyle(color: Colors.white70, fontSize: 12, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 4),
+              const Text(
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                style: TextStyle(color: Colors.white, fontSize: 13),
+              ),
+              const SizedBox(height: 4),
+              const Text(
+                'Reply',
+                style: TextStyle(color: Colors.white54, fontSize: 12),
+              ),
+            ],
+          ),
+        ),
+        const Column(
+          children: [
+            Icon(Icons.favorite_border, color: Colors.white54, size: 20),
+            Text('2', style: TextStyle(color: Colors.white54, fontSize: 10)),
+          ],
+        ),
+      ],
     );
   }
 }

@@ -54,14 +54,10 @@ class _ShortVideoViewState extends State<_ShortVideoView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<
-      DashboardScreenCubit,
-      DashboardScreenState,
-      DashboardScreenTab
-    >(
+    return BlocSelector<DashboardScreenCubit, DashboardScreenState, DashboardScreenTab>(
       selector: (state) => state.selectedTab,
       builder: (context, selectedTab) {
-        final isShortsTabSelected = selectedTab == DashboardScreenTab.shorts;
+        final isShortsTabSelected = selectedTab == DashboardScreenTab.shortVideo;
 
         return Scaffold(
           backgroundColor: Colors.black,
@@ -93,8 +89,7 @@ class _ShortVideoViewState extends State<_ShortVideoView> {
                       children: [
                         VideoPlayerItem(
                           videoUrl: video.url,
-                          isVisible:
-                              index == _currentIndex && isShortsTabSelected,
+                          isVisible: index == _currentIndex && isShortsTabSelected,
                         ),
                         // Overlay for Caption
                         Positioned(

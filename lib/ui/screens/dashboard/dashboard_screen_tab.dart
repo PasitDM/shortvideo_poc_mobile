@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 
-import '../../extensions/build_context_extension.dart';
-
 enum DashboardScreenTab {
   home,
-  shorts,
+  shortVideo,
+  addShort,
+  search,
   settings;
 
   IconData get iconData {
     switch (this) {
       case DashboardScreenTab.home:
         return Icons.home;
-      case DashboardScreenTab.shorts:
-        return Icons.ondemand_video;
+      case DashboardScreenTab.shortVideo:
+        return Icons.play_circle_outline;
+      case DashboardScreenTab.addShort:
+        return Icons.add_box_outlined;
+      case DashboardScreenTab.search:
+        return Icons.search;
       case DashboardScreenTab.settings:
         return Icons.settings;
     }
@@ -21,11 +25,15 @@ enum DashboardScreenTab {
   String title(BuildContext context) {
     switch (this) {
       case DashboardScreenTab.home:
-        return context.l10n.dashboard_screen_tab_home;
-      case DashboardScreenTab.shorts:
-        return context.l10n.dashboard_screen_tab_shorts;
+        return 'Home';
+      case DashboardScreenTab.shortVideo:
+        return 'Shorts';
+      case DashboardScreenTab.addShort:
+        return 'Add';
+      case DashboardScreenTab.search:
+        return 'Search';
       case DashboardScreenTab.settings:
-        return context.l10n.dashboard_screen_tab_settings;
+        return 'Settings';
     }
   }
 }
