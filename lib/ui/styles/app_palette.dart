@@ -6,8 +6,8 @@ class AppPalette {
   AppPalette._();
 
   // Neutral Colors
-  static const Color neutralLevel00 = Color(0xFF0D0D0D);
-  static const Color neutralLevel01 = Color(0xFF1A1A1A);
+  static const Color neutralLevel00 = Color(0xFF121212); // Figma: System/Main
+  static const Color neutralLevel01 = Color(0xFF1E1E1E);
   static const Color neutralLevel02 = Color(0xFF4F4F4F);
   static const Color neutralLevel03 = Color(0xFF787878);
   static const Color neutralLevel04 = Color(0xFFA1A1A1);
@@ -26,7 +26,7 @@ class AppPalette {
   static const Color successDark = Color(0xFF166534);
 
   // Brand Colors
-  static const Color brandPrimaryDefault = Color(0xFFE32321);
+  static const Color brandPrimaryDefault = Color(0xFF880185); // Figma: Action/Primary
 
   // ============================================================================
   // ADDITIONAL COLORS FOR LIGHT THEME

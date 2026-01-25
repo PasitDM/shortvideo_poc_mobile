@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+import '../../../../data/models/video_model.dart';
 import '../../../../domain/core/app_error.dart';
 
 enum HomeScreenStatus {
@@ -13,16 +14,26 @@ enum HomeScreenStatus {
 
 class HomeScreenState extends Equatable {
   final HomeScreenStatus status;
+  final List<VideoModel> videos;
   final AppError? error;
 
-  const HomeScreenState({this.status = HomeScreenStatus.initial, this.error});
+  const HomeScreenState({
+    this.status = HomeScreenStatus.initial,
+    this.videos = const [],
+    this.error,
+  });
 
   @override
-  List<Object?> get props => [status, error];
+  List<Object?> get props => [status, videos, error];
 
-  HomeScreenState copyWith({HomeScreenStatus? status, AppError? error}) {
+  HomeScreenState copyWith({
+    HomeScreenStatus? status,
+    List<VideoModel>? videos,
+    AppError? error,
+  }) {
     return HomeScreenState(
       status: status ?? this.status,
+      videos: videos ?? this.videos,
       error: error ?? this.error,
     );
   }
@@ -31,8 +42,11 @@ class HomeScreenState extends Equatable {
     return copyWith(status: HomeScreenStatus.loading);
   }
 
-  HomeScreenState ready() {
-    return copyWith(status: HomeScreenStatus.ready);
+  HomeScreenState ready(List<VideoModel> videos) {
+    return copyWith(
+      status: HomeScreenStatus.ready,
+      videos: videos,
+    );
   }
 
   HomeScreenState failure(AppError error) {

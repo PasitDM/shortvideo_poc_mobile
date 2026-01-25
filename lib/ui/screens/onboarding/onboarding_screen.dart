@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../app/router/app_routes.dart';
 import '../../extensions/build_context_extension.dart';
 import '../../styles/index.dart';
 import 'cubit/onboarding_screen_cubit.dart';
@@ -160,9 +162,7 @@ class _OnboardingScreenViewState extends State<OnboardingScreenView> {
                   );
                 } else {
                   // Navigate to Get Started or Auth
-                  // context.go('/get-started');
-                  // For now print
-                  debugPrint('Finished Onboarding');
+                  context.go(AppRoutes.getStarted);
                 }
               },
               style: ElevatedButton.styleFrom(
