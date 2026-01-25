@@ -4,12 +4,11 @@
 include: package:flutter_lints/flutter.yaml
 
 formatter:
-  page_width: 80
+  page_width: 140
   trailing_commas: preserve
 
 linter:
   rules:
-    always_use_package_imports: true
     always_declare_return_types: true
     avoid_empty_else: true
     avoid_function_literals_in_foreach_calls: true
@@ -26,6 +25,10 @@ linter:
     unnecessary_breaks: true
     unnecessary_overrides: false
     unrelated_type_equality_checks: true
+    # Imports & ordering
+    prefer_relative_imports: true
+    directives_ordering: true
+    depend_on_referenced_packages: true
 
 analyzer:
   exclude:

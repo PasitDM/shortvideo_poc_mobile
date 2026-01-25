@@ -2,10 +2,10 @@
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.rulers": [
-      80
+      140
     ]
   },
-  "dart.lineLength": 80,
+  "dart.lineLength": 140,
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
   },

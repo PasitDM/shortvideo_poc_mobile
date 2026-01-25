@@ -1,102 +1,95 @@
-import 'package:app_template/ui/extensions/build_context_extension.dart';
 import 'package:flutter/material.dart';
 
+import '../extensions/build_context_extension.dart';
+
+/// Typography definitions with GraphikThai font family
 class AppTextStyle {
   AppTextStyle._();
 
-  static TextStyle get _base => const TextStyle();
+  static const String fontFamily = 'GraphikThai';
 
-  /// Thin
-  static TextStyle w100(double fontSize) =>
-      _base.copyWith(fontWeight: FontWeight.w100, fontSize: fontSize);
+  static TextStyle get _base => const TextStyle(
+    fontFamily: fontFamily,
+    leadingDistribution: TextLeadingDistribution.even,
+  );
 
-  /// ExtraLight
-  static TextStyle w200(double fontSize) =>
-      _base.copyWith(fontWeight: FontWeight.w200, fontSize: fontSize);
+  /// Thin - w100
+  static TextStyle w100(double fontSize) => _base.copyWith(fontWeight: FontWeight.w100, fontSize: fontSize);
 
-  /// Light
-  static TextStyle w300(double fontSize) =>
-      _base.copyWith(fontWeight: FontWeight.w300, fontSize: fontSize);
+  /// ExtraLight - w200
+  static TextStyle w200(double fontSize) => _base.copyWith(fontWeight: FontWeight.w200, fontSize: fontSize);
 
-  /// Regular
-  static TextStyle w400(double fontSize) =>
-      _base.copyWith(fontWeight: FontWeight.w400, fontSize: fontSize);
+  /// Light - w300
+  static TextStyle w300(double fontSize) => _base.copyWith(fontWeight: FontWeight.w300, fontSize: fontSize);
 
-  /// Medium
-  static TextStyle w500(double fontSize) =>
-      _base.copyWith(fontWeight: FontWeight.w500, fontSize: fontSize);
+  /// Regular - w400
+  static TextStyle w400(double fontSize) => _base.copyWith(fontWeight: FontWeight.w400, fontSize: fontSize);
 
-  /// SemiBold
-  static TextStyle w600(double fontSize) =>
-      _base.copyWith(fontWeight: FontWeight.w600, fontSize: fontSize);
+  /// Medium - w500
+  static TextStyle w500(double fontSize) => _base.copyWith(fontWeight: FontWeight.w500, fontSize: fontSize);
 
-  /// Bold
-  static TextStyle w700(double fontSize) =>
-      _base.copyWith(fontWeight: FontWeight.w700, fontSize: fontSize);
+  /// SemiBold - w600
+  static TextStyle w600(double fontSize) => _base.copyWith(fontWeight: FontWeight.w600, fontSize: fontSize);
 
-  /// ExtraBold
-  static TextStyle w800(double fontSize) =>
-      _base.copyWith(fontWeight: FontWeight.w800, fontSize: fontSize);
+  /// Bold - w700
+  static TextStyle w700(double fontSize) => _base.copyWith(fontWeight: FontWeight.w700, fontSize: fontSize);
 
-  /// Black
-  static TextStyle w900(double fontSize) =>
-      _base.copyWith(fontWeight: FontWeight.w900, fontSize: fontSize);
+  /// ExtraBold - w800
+  static TextStyle w800(double fontSize) => _base.copyWith(fontWeight: FontWeight.w800, fontSize: fontSize);
+
+  /// Black - w900
+  static TextStyle w900(double fontSize) => _base.copyWith(fontWeight: FontWeight.w900, fontSize: fontSize);
+
+  // Common styles (examples)
+  static TextStyle get header1 => w700(32);
+  static TextStyle get header2 => w600(24);
+  static TextStyle get header3 => w500(20);
+  static TextStyle get bodyLarge => w400(16);
+  static TextStyle get bodyMedium => w400(14);
+  static TextStyle get bodySmall => w400(12);
 }
 
+/// TextStyle extensions for common modifications
 extension TextStyleExtension on TextStyle {
   TextStyle get italic => copyWith(fontStyle: FontStyle.italic);
 
-  TextStyle get underline =>
-      copyWith(decoration: TextDecoration.underline, decorationColor: color);
+  TextStyle get underline => copyWith(decoration: TextDecoration.underline, decorationColor: color);
 
-  TextStyle get lineThrough =>
-      copyWith(decoration: TextDecoration.lineThrough, decorationColor: color);
+  TextStyle get lineThrough => copyWith(decoration: TextDecoration.lineThrough, decorationColor: color);
 
-  TextStyle withAlpha(double alpha) =>
-      copyWith(color: color?.withValues(alpha: alpha));
+  TextStyle withAlpha(double alpha) => copyWith(color: color?.withValues(alpha: alpha));
 
-  TextStyle colorPrimary(BuildContext context) =>
-      copyWith(color: context.colorScheme.primary);
+  // ColorScheme colors (for Material defaults)
+  TextStyle colorPrimary(BuildContext context) => copyWith(color: context.colorScheme.primary);
 
-  TextStyle colorSecondary(BuildContext context) =>
-      copyWith(color: context.colorScheme.secondary);
+  TextStyle colorSecondary(BuildContext context) => copyWith(color: context.colorScheme.secondary);
 
-  TextStyle colorTertiary(BuildContext context) =>
-      copyWith(color: context.colorScheme.tertiary);
+  TextStyle colorTertiary(BuildContext context) => copyWith(color: context.colorScheme.tertiary);
 
-  TextStyle colorError(BuildContext context) =>
-      copyWith(color: context.colorScheme.error);
+  TextStyle colorError(BuildContext context) => copyWith(color: context.colorScheme.error);
 
-  TextStyle colorOnPrimary(BuildContext context) =>
-      copyWith(color: context.colorScheme.onPrimary);
+  TextStyle colorOnPrimary(BuildContext context) => copyWith(color: context.colorScheme.onPrimary);
 
-  TextStyle colorOnSecondary(BuildContext context) =>
-      copyWith(color: context.colorScheme.onSecondary);
+  TextStyle colorOnSecondary(BuildContext context) => copyWith(color: context.colorScheme.onSecondary);
 
-  TextStyle colorOnTertiary(BuildContext context) =>
-      copyWith(color: context.colorScheme.onTertiary);
+  TextStyle colorOnSurface(BuildContext context) => copyWith(color: context.colorScheme.onSurface);
 
-  TextStyle colorOnPrimaryContainer(BuildContext context) =>
-      copyWith(color: context.colorScheme.onPrimaryContainer);
+  TextStyle colorOnSurfaceVariant(BuildContext context) => copyWith(color: context.colorScheme.onSurfaceVariant);
 
-  TextStyle colorOnSecondaryContainer(BuildContext context) =>
-      copyWith(color: context.colorScheme.onSecondaryContainer);
+  // AppColorsTheme colors (for custom Figma colors)
+  TextStyle colorTextDefault(BuildContext context) => copyWith(color: context.appColors.textDefault);
 
-  TextStyle colorOnTertiaryContainer(BuildContext context) =>
-      copyWith(color: context.colorScheme.onTertiaryContainer);
+  TextStyle colorTextSecondary(BuildContext context) => copyWith(color: context.appColors.textSecondary);
 
-  TextStyle colorOnSurface(BuildContext context) =>
-      copyWith(color: context.colorScheme.onSurface);
+  TextStyle colorTextThirdary(BuildContext context) => copyWith(color: context.appColors.textThirdary);
 
-  TextStyle colorOnSurfaceVariant(BuildContext context) =>
-      copyWith(color: context.colorScheme.onSurfaceVariant);
+  TextStyle colorTextDisable(BuildContext context) => copyWith(color: context.appColors.textDisable);
 
-  TextStyle colorPositive(BuildContext context) =>
-      copyWith(color: context.appColors.positive);
+  TextStyle colorTextBrand(BuildContext context) => copyWith(color: context.appColors.textBrand);
 
-  TextStyle colorCautionary(BuildContext context) =>
-      copyWith(color: context.appColors.cautionary);
+  TextStyle colorTextSuccess(BuildContext context) => copyWith(color: context.appColors.textSuccess);
 
-  TextStyle colorNegative(BuildContext context) =>
-      copyWith(color: context.appColors.negative);
+  TextStyle colorTextWarning(BuildContext context) => copyWith(color: context.appColors.textWarning);
+
+  TextStyle colorTextError(BuildContext context) => copyWith(color: context.appColors.textError);
 }
