@@ -58,7 +58,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
 
       case SplashScreenStatus.newVersionAvailable:
         final appStoreLink = state.appStoreLink;
-        if (appStoreLink == null) return;
+        if (appStoreLink == null) break;
         _alertNewVersionAvailable(
           appStoreLink: appStoreLink,
           storeVersion: state.storeVersion,

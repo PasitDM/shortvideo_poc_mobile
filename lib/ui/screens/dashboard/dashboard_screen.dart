@@ -112,7 +112,7 @@ class _DashboardScreenViewState extends State<DashboardScreenView> {
           destinations: DashboardScreenTab.values.map((e) {
             if (e == DashboardScreenTab.addShort) {
               return const Padding(
-                padding: EdgeInsetsGeometry.only(top: 15),
+                padding: EdgeInsets.only(top: 15),
                 child: NavigationDestination(
                   icon: _CustomAddIcon(),
                   label: '',

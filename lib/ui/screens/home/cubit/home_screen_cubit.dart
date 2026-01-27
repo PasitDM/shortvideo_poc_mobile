@@ -25,7 +25,7 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
       ),
       VideoModel(
         id: '2',
-      url: 'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+        url: 'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
         caption: 'Buzzing Bee 🐝 #bee #honey',
         thumbnail: '',
         title: 'Insect Life',
@@ -35,5 +35,9 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
     ];
 
     emit(state.ready(videos));
+  }
+
+  void updateFocusedIndex(int index) {
+    emit(state.copyWith(focusedIndex: index));
   }
 }
