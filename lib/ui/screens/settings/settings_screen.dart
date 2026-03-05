@@ -50,6 +50,8 @@ class _SettingsScreenViewState extends State<SettingsScreenView> {
               spacing: 16,
               children: [
                 _settingsButton(context, 'Watch History', () => context.push(AppRoutes.history)),
+                _settingsButton(context, 'Watch History1', () => context.push(AppRoutes.history1)),
+                _settingsButton(context, 'Watch History2', () => context.push(AppRoutes.history2)),
                 _themeModeSetting(),
                 _logoutButton(),
               ],

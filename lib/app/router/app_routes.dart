@@ -10,4 +10,6 @@ final class AppRoutes {
   static const String products = '/products';
   static const String product = '/product';
   static const String history = '/history';
+  static const String history2 = '/history2';
+  static const String history1 = '/history1';
 }

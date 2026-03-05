@@ -17,7 +17,11 @@ class ShortVideoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ShortVideoScreenCubit(videoRepository: getIt()),
+      create: (context) => ShortVideoScreenCubit(
+        videoRepository: getIt(),
+        history1Repository: getIt(),
+        watchHistoryRepository: getIt(),
+      ),
       child: _ShortVideoView(initialIndex: initialIndex),
     );
   }
@@ -78,6 +82,10 @@ class _ShortVideoViewState extends State<_ShortVideoView> {
                   controller: _pageController,
                   itemCount: state.videos.length,
                   onPageChanged: (index) {
+                    // Record the previously watched video before moving to next
+                    final previousVideo = state.videos[_currentIndex];
+                    _cubit.recordWatched(previousVideo);
+
                     setState(() {
                       _currentIndex = index;
                     });

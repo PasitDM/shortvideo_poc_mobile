@@ -2,19 +2,25 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/data_sources/auth_remote_data_source.dart';
+import '../../data/data_sources/history1_local_data_source.dart';
 import '../../data/data_sources/store_version_remote_data_source.dart';
 import '../../data/data_sources/user_remote_data_source.dart';
 import '../../data/data_sources/video_remote_data_source.dart';
+import '../../data/data_sources/watch_history_local_data_source.dart';
 import '../../data/repositories/auth_repository_impl.dart';
+import '../../data/repositories/history1_repository_impl.dart';
 import '../../data/repositories/store_version_repository_impl.dart';
 import '../../data/repositories/user_repository_impl.dart';
 import '../../data/repositories/video_repository_impl.dart';
+import '../../data/repositories/watch_history_repository_impl.dart';
 import '../../data/storages/app_storage_impl.dart';
 import '../../data/storages/token_vault_impl.dart';
 import '../../domain/repositories/auth_repository.dart';
+import '../../domain/repositories/history1_repository.dart';
 import '../../domain/repositories/store_version_repository.dart';
 import '../../domain/repositories/user_repository.dart';
 import '../../domain/repositories/video_repository.dart';
+import '../../domain/repositories/watch_history_repository.dart';
 import '../../domain/storages/app_storage.dart';
 import '../../domain/storages/secure_storage.dart';
 import '../../domain/storages/token_vault.dart';
@@ -72,6 +78,17 @@ Future<void> initializeDependencies() async {
   );
   getIt.registerLazySingleton<VideoRepository>(
     () => VideoRepositoryImpl(VideoRemoteDataSource(apiClient)),
+  );
+  getIt.registerLazySingleton<WatchHistoryRepository>(
+    () => WatchHistoryRepositoryImpl(
+      WatchHistoryLocalDataSource(storage),
+    ),
+  );
+
+  getIt.registerLazySingleton<History1Repository>(
+    () => History1RepositoryImpl(
+      History1LocalDataSource(storage),
+    ),
   );
 
   /// UseCases

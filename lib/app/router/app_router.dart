@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../../ui/screens/auth/get_started_screen.dart';
 import '../../ui/screens/dashboard/dashboard_screen.dart';
 import '../../ui/screens/history/history_screen.dart';
+import '../../ui/screens/history1/history1_screen.dart';
+import '../../ui/screens/history_2/history_2_screen.dart';
 import '../../ui/screens/login/login_screen.dart';
 import '../../ui/screens/onboarding/onboarding_screen.dart';
 import '../../ui/screens/product/product_screen.dart';
@@ -72,6 +74,18 @@ class AppRouter {
         path: AppRoutes.history,
         builder: (context, state) {
           return const HistoryScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.history2,
+        builder: (context, state) {
+          return const History2Screen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.history1,
+        builder: (context, state) {
+          return const History1Screen();
         },
       ),
     ],
