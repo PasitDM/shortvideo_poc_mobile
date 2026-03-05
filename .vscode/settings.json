@@ -22,6 +22,6 @@
     "missing_placeholder_with_metadata",
     "missing_messages_from_template"
   ],
-  "dart.flutterSdkPath": ".fvm/versions/3.38.7",
+  "dart.flutterSdkPath": ".fvm/versions/3.38.10",
   "cmake.sourceDirectory": "/Users/mosd7sol/Work/Flutter_Projects/shortvideo_poc_mobile/windows/runner"
 }

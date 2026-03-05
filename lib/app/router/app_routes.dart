@@ -9,4 +9,5 @@ final class AppRoutes {
   static const String dashboard = '/dashboard';
   static const String products = '/products';
   static const String product = '/product';
+  static const String history = '/history';
 }

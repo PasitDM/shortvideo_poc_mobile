@@ -21,37 +21,38 @@ class _HomeScreenViewState extends State<HomeScreenView> {
     context.read<HomeScreenCubit>().loadVideos();
   }
 
-  void _onPageChanged(int index) {
-    context.read<HomeScreenCubit>().updateFocusedIndex(index);
-  }
+  // void _onPageChanged(int index) {
+  //   context.read<HomeScreenCubit>().updateFocusedIndex(index);
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      // backgroundColor: Colors.black,
       body: BlocBuilder<HomeScreenCubit, HomeScreenState>(
         builder: (context, state) {
-          if (state.status.isLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
+          return const Center(child: Text('Home'));
+          // if (state.status.isLoading) {
+          //   return const Center(child: CircularProgressIndicator());
+          // }
 
-          if (state.videos.isEmpty) {
-            return const Center(
-              child: Text('No Videos', style: TextStyle(color: Colors.white)),
-            );
-          }
+          // if (state.videos.isEmpty) {
+          //   return const Center(
+          //     child: Text('No Videos', style: TextStyle(color: Colors.white)),
+          //   );
+          // }
 
-          return PageView.builder(
-            scrollDirection: Axis.vertical,
-            itemCount: state.videos.length,
-            onPageChanged: _onPageChanged,
-            itemBuilder: (context, index) {
-              return _VideoPostItem(
-                video: state.videos[index],
-                isFocused: index == state.focusedIndex,
-              );
-            },
-          );
+          // return PageView.builder(
+          //   scrollDirection: Axis.vertical,
+          //   itemCount: state.videos.length,
+          //   onPageChanged: _onPageChanged,
+          //   itemBuilder: (context, index) {
+          //     return _VideoPostItem(
+          //       video: state.videos[index],
+          //       isFocused: index == state.focusedIndex,
+          //     );
+          //   },
+          // );
         },
       ),
     );

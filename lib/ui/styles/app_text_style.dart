@@ -1,95 +1,71 @@
 import 'package:flutter/material.dart';
 
-import '../extensions/build_context_extension.dart';
+import 'font_sizes.dart';
 
-/// Typography definitions with GraphikThai font family
 class AppTextStyle {
-  AppTextStyle._();
+  static const String fontFamily = '';
 
-  static const String fontFamily = 'GraphikThai';
+  static TextStyle _base(double size, FontWeight weight, double lineHeightPx) {
+    return TextStyle(
+      fontFamily: fontFamily,
+      fontSize: size,
+      fontWeight: weight,
+      height: lineHeightPx / size,
+      leadingDistribution: TextLeadingDistribution.even,
+    );
+  }
 
-  static TextStyle get _base => const TextStyle(
-    fontFamily: fontFamily,
-    leadingDistribution: TextLeadingDistribution.even,
-  );
+  // Weight helper methods (for backward compatibility)
+  static TextStyle w400(double fontSize) => _base(fontSize, FontWeight.w400, fontSize * 1.5);
+  static TextStyle w500(double fontSize) => _base(fontSize, FontWeight.w500, fontSize * 1.5);
+  static TextStyle w600(double fontSize) => _base(fontSize, FontWeight.w600, fontSize * 1.5);
+  static TextStyle w700(double fontSize) => _base(fontSize, FontWeight.w700, fontSize * 1.5);
 
-  /// Thin - w100
-  static TextStyle w100(double fontSize) => _base.copyWith(fontWeight: FontWeight.w100, fontSize: fontSize);
+  // ============================================================================
+  // FIGMA DESIGN TOKENS
+  // ============================================================================
+  /// LargeTitle Regular - Size: 24, LineHeight: 36
+  static TextStyle get largeTitleRegular => _base(AppFontSizes.fontSize24, FontWeight.w400, 36);
 
-  /// ExtraLight - w200
-  static TextStyle w200(double fontSize) => _base.copyWith(fontWeight: FontWeight.w200, fontSize: fontSize);
+  /// LargeTitle Medium - Size: 24, LineHeight: 36
+  static TextStyle get largeTitleMedium => _base(AppFontSizes.fontSize24, FontWeight.w500, 36);
 
-  /// Light - w300
-  static TextStyle w300(double fontSize) => _base.copyWith(fontWeight: FontWeight.w300, fontSize: fontSize);
+  /// LargeTitle Bold - Size: 24, LineHeight: 36
+  static TextStyle get largeTitleBold => _base(AppFontSizes.fontSize24, FontWeight.w700, 36);
 
-  /// Regular - w400
-  static TextStyle w400(double fontSize) => _base.copyWith(fontWeight: FontWeight.w400, fontSize: fontSize);
+  /// Subtitle Regular - Size: 20, LineHeight: 30
+  static TextStyle get subtitleRegular => _base(AppFontSizes.fontSize20, FontWeight.w400, 30);
 
-  /// Medium - w500
-  static TextStyle w500(double fontSize) => _base.copyWith(fontWeight: FontWeight.w500, fontSize: fontSize);
+  /// Subtitle Medium - Size: 20, LineHeight: 30
+  static TextStyle get subtitleMedium => _base(AppFontSizes.fontSize20, FontWeight.w500, 30);
 
-  /// SemiBold - w600
-  static TextStyle w600(double fontSize) => _base.copyWith(fontWeight: FontWeight.w600, fontSize: fontSize);
+  /// Subtitle Bold - Size: 20, LineHeight: 30
+  static TextStyle get subtitleBold => _base(AppFontSizes.fontSize20, FontWeight.w700, 30);
 
-  /// Bold - w700
-  static TextStyle w700(double fontSize) => _base.copyWith(fontWeight: FontWeight.w700, fontSize: fontSize);
+  /// Body1 Regular (Content1) - Size: 16, LineHeight: 24
+  static TextStyle get body1Regular => _base(AppFontSizes.fontSize16, FontWeight.w400, 24);
 
-  /// ExtraBold - w800
-  static TextStyle w800(double fontSize) => _base.copyWith(fontWeight: FontWeight.w800, fontSize: fontSize);
+  /// Body1 Medium (Content1) - Size: 16, LineHeight: 24
+  static TextStyle get body1Medium => _base(AppFontSizes.fontSize16, FontWeight.w500, 24);
 
-  /// Black - w900
-  static TextStyle w900(double fontSize) => _base.copyWith(fontWeight: FontWeight.w900, fontSize: fontSize);
+  /// Body1 Bold (Content1) - Size: 16, LineHeight: 24
+  static TextStyle get body1Bold => _base(AppFontSizes.fontSize16, FontWeight.w700, 24);
 
-  // Common styles (examples)
-  static TextStyle get header1 => w700(32);
-  static TextStyle get header2 => w600(24);
-  static TextStyle get header3 => w500(20);
-  static TextStyle get bodyLarge => w400(16);
-  static TextStyle get bodyMedium => w400(14);
-  static TextStyle get bodySmall => w400(12);
-}
+  /// Body2 Regular (Content2) - Size: 14, LineHeight: 24
+  static TextStyle get body2Regular => _base(AppFontSizes.fontSize14, FontWeight.w400, 24);
 
-/// TextStyle extensions for common modifications
-extension TextStyleExtension on TextStyle {
-  TextStyle get italic => copyWith(fontStyle: FontStyle.italic);
+  /// Body2 Medium (Content2) - Size: 14, LineHeight: 24
+  static TextStyle get body2Medium => _base(AppFontSizes.fontSize14, FontWeight.w500, 24);
 
-  TextStyle get underline => copyWith(decoration: TextDecoration.underline, decorationColor: color);
+  /// Body2 Bold (Content2) - Size: 14, LineHeight: 24
+  static TextStyle get body2Bold => _base(AppFontSizes.fontSize14, FontWeight.w700, 24);
 
-  TextStyle get lineThrough => copyWith(decoration: TextDecoration.lineThrough, decorationColor: color);
+  /// Caption Regular - Size: 12, LineHeight: 20
+  static TextStyle get captionRegular => _base(AppFontSizes.fontSize12, FontWeight.w400, 20);
 
-  TextStyle withAlpha(double alpha) => copyWith(color: color?.withValues(alpha: alpha));
+  /// Caption Medium - Size: 12, LineHeight: 20
+  static TextStyle get captionMedium => _base(AppFontSizes.fontSize12, FontWeight.w500, 20);
 
-  // ColorScheme colors (for Material defaults)
-  TextStyle colorPrimary(BuildContext context) => copyWith(color: context.colorScheme.primary);
-
-  TextStyle colorSecondary(BuildContext context) => copyWith(color: context.colorScheme.secondary);
-
-  TextStyle colorTertiary(BuildContext context) => copyWith(color: context.colorScheme.tertiary);
-
-  TextStyle colorError(BuildContext context) => copyWith(color: context.colorScheme.error);
-
-  TextStyle colorOnPrimary(BuildContext context) => copyWith(color: context.colorScheme.onPrimary);
-
-  TextStyle colorOnSecondary(BuildContext context) => copyWith(color: context.colorScheme.onSecondary);
-
-  TextStyle colorOnSurface(BuildContext context) => copyWith(color: context.colorScheme.onSurface);
-
-  TextStyle colorOnSurfaceVariant(BuildContext context) => copyWith(color: context.colorScheme.onSurfaceVariant);
-
-  // AppColorsTheme colors (for custom Figma colors)
-  TextStyle colorTextDefault(BuildContext context) => copyWith(color: context.appColors.textDefault);
-
-  TextStyle colorTextSecondary(BuildContext context) => copyWith(color: context.appColors.textSecondary);
-
-  TextStyle colorTextThirdary(BuildContext context) => copyWith(color: context.appColors.textThirdary);
-
-  TextStyle colorTextDisable(BuildContext context) => copyWith(color: context.appColors.textDisable);
-
-  TextStyle colorTextBrand(BuildContext context) => copyWith(color: context.appColors.textBrand);
-
-  TextStyle colorTextSuccess(BuildContext context) => copyWith(color: context.appColors.textSuccess);
-
-  TextStyle colorTextWarning(BuildContext context) => copyWith(color: context.appColors.textWarning);
-
-  TextStyle colorTextError(BuildContext context) => copyWith(color: context.appColors.textError);
+  /// Caption Bold - Size: 12, LineHeight: 20
+  static TextStyle get captionBold => _base(AppFontSizes.fontSize12, FontWeight.w700, 20);
 }

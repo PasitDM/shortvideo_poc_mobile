@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../ui/screens/auth/get_started_screen.dart';
 import '../../ui/screens/dashboard/dashboard_screen.dart';
+import '../../ui/screens/history/history_screen.dart';
 import '../../ui/screens/login/login_screen.dart';
 import '../../ui/screens/onboarding/onboarding_screen.dart';
 import '../../ui/screens/product/product_screen.dart';
@@ -65,6 +66,12 @@ class AppRouter {
         builder: (context, state) {
           final id = state.uri.queryParameters['id'];
           return ProductScreen(productId: id);
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.history,
+        builder: (context, state) {
+          return const HistoryScreen();
         },
       ),
     ],

@@ -48,7 +48,11 @@ class _SettingsScreenViewState extends State<SettingsScreenView> {
             controller: _scrollController,
             child: Column(
               spacing: 16,
-              children: [_themeModeSetting(), _logoutButton()],
+              children: [
+                _settingsButton(context, 'Watch History', () => context.push(AppRoutes.history)),
+                _themeModeSetting(),
+                _logoutButton(),
+              ],
             ),
           ),
         ),
@@ -80,6 +84,14 @@ class _SettingsScreenViewState extends State<SettingsScreenView> {
           );
         },
       ),
+    );
+  }
+
+  Widget _settingsButton(BuildContext context, String title, VoidCallback onTap) {
+    return ListTile(
+      title: Text(title),
+      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+      onTap: onTap,
     );
   }
 

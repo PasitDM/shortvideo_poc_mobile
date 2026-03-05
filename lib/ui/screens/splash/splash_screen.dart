@@ -69,7 +69,8 @@ class _SplashScreenViewState extends State<SplashScreenView> {
 
       case SplashScreenStatus.unauthenticated:
         // context.go(AppRoutes.login);
-        context.go(AppRoutes.onboarding);
+        // context.go(AppRoutes.onboarding);
+        context.go(AppRoutes.dashboard);
     }
   }
 
