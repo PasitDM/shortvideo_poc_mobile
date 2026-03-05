@@ -11,14 +11,14 @@ class AppTheme {
   static ColorScheme lightScheme() {
     return const ColorScheme(
       brightness: Brightness.light,
-      primary: AppPalette.brandPrimaryDefault,
+      primary: AppPalette.bandflippyPrimary,
       onPrimary: AppPalette.white,
-      secondary: AppPalette.lightTextSecondary,
+      secondary: AppPalette.zincLevel02,
       onSecondary: AppPalette.white,
-      error: AppPalette.errorDefault,
+      error: AppPalette.red400,
       onError: AppPalette.white,
-      surface: AppPalette.lightBackground,
-      onSurface: AppPalette.lightTextPrimary,
+      surface: AppPalette.white,
+      onSurface: AppPalette.zincLevel00,
     );
   }
 
@@ -32,14 +32,14 @@ class AppTheme {
   static ColorScheme darkScheme() {
     return const ColorScheme(
       brightness: Brightness.dark,
-      primary: AppPalette.brandPrimaryDefault,
+      primary: AppPalette.bandflippyPrimary,
       onPrimary: AppPalette.white,
-      secondary: AppPalette.neutralLevel04,
-      onSecondary: AppPalette.neutralLevel06,
-      error: AppPalette.errorDefault,
+      secondary: AppPalette.zincLevel02,
+      onSecondary: AppPalette.zincLevel04,
+      error: AppPalette.red400,
       onError: AppPalette.white,
-      surface: AppPalette.neutralLevel00,
-      onSurface: AppPalette.neutralLevel06,
+      surface: AppPalette.zincLevel00,
+      onSurface: AppPalette.zincLevel04,
     );
   }
 
@@ -76,18 +76,18 @@ class AppTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: appColors.backgroundPrimary,
         elevation: 0,
-        iconTheme: IconThemeData(color: appColors.iconDefault),
+        iconTheme: IconThemeData(color: appColors.iconPrimary),
         titleTextStyle: baseTextTheme.titleLarge?.copyWith(
           fontFamily: AppTextStyle.fontFamily,
-          color: appColors.textDefault,
+          color: appColors.textPrimary,
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: appColors.buttonPrimary,
-          foregroundColor: appColors.textDefault,
-          disabledBackgroundColor: appColors.buttonPrimaryDisable,
-          disabledForegroundColor: appColors.textButtonDisable,
+          foregroundColor: appColors.textPrimary,
+          disabledBackgroundColor: appColors.backgroundSecondary,
+          disabledForegroundColor: appColors.textTertiary,
           minimumSize: const Size(120, 36),
           padding: EdgeInsets.zero,
           elevation: 1,
@@ -103,8 +103,8 @@ class AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: appColors.buttonPrimary,
-          side: BorderSide(color: appColors.borderDefault),
-          disabledForegroundColor: appColors.textDisable,
+          side: BorderSide(color: appColors.borderSecondary),
+          disabledForegroundColor: appColors.textTertiary,
           minimumSize: const Size(64, 36),
           padding: EdgeInsets.zero,
           textStyle: baseTextTheme.bodyMedium?.copyWith(
@@ -122,18 +122,18 @@ class AppTheme {
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         hintStyle: baseTextTheme.bodyMedium?.copyWith(
           fontFamily: AppTextStyle.fontFamily,
-          color: appColors.textThirdary,
+          color: appColors.textTertiary,
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: appColors.borderDefault),
+          borderSide: BorderSide(color: appColors.borderSecondary),
           borderRadius: BorderRadius.circular(8),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: appColors.borderDefault),
+          borderSide: BorderSide(color: appColors.borderSecondary),
           borderRadius: BorderRadius.circular(8),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: appColors.borderFocus, width: 2.0),
+          borderSide: BorderSide(color: appColors.borderPrimary, width: 2.0),
           borderRadius: BorderRadius.circular(8),
         ),
         errorBorder: OutlineInputBorder(
@@ -141,7 +141,7 @@ class AppTheme {
           borderRadius: BorderRadius.circular(8),
         ),
         disabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: appColors.borderDisable),
+          borderSide: BorderSide(color: appColors.borderSecondary),
           borderRadius: BorderRadius.circular(8),
         ),
       ),
@@ -157,8 +157,8 @@ class AppTheme {
         ),
       ),
       tabBarTheme: TabBarThemeData(
-        labelColor: appColors.textDefault,
-        unselectedLabelColor: appColors.textThirdary,
+        labelColor: appColors.textPrimary,
+        unselectedLabelColor: appColors.textTertiary,
         labelStyle: baseTextTheme.bodyMedium?.copyWith(
           fontFamily: AppTextStyle.fontFamily,
           fontWeight: FontWeight.bold,
@@ -171,7 +171,7 @@ class AppTheme {
         backgroundColor: appColors.backgroundPrimary,
         titleTextStyle: baseTextTheme.titleLarge?.copyWith(
           fontFamily: AppTextStyle.fontFamily,
-          color: appColors.textDefault,
+          color: appColors.textPrimary,
         ),
         contentTextStyle: baseTextTheme.bodyMedium?.copyWith(
           fontFamily: AppTextStyle.fontFamily,

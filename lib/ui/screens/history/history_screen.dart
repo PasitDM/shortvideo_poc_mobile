@@ -31,10 +31,10 @@ class _HistoryScreenView extends StatelessWidget {
         backgroundColor: context.appColors.backgroundPrimary,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new, color: context.appColors.iconDefault, size: 20),
+          icon: Icon(Icons.arrow_back_ios_new, color: context.appColors.iconPrimary, size: 20),
           onPressed: () => context.pop(),
         ),
-        title: Text('ประวัติการรับชม', style: AppTextStyle.largeTitleRegular.copyWith(color: context.appColors.textDefault)),
+        title: Text('ประวัติการรับชม', style: AppTextStyle.largeTitleRegular.copyWith(color: context.appColors.textPrimary)),
         centerTitle: true,
         actions: [
           BlocBuilder<HistoryCubit, HistoryState>(
@@ -42,15 +42,15 @@ class _HistoryScreenView extends StatelessWidget {
               if (state is HistoryLoaded && state.items.isNotEmpty) {
                 return IconButton(
                   icon: state.isEditMode
-                      ? Text('ยกเลิก', style: AppTextStyle.body1Medium.copyWith(color: context.appColors.textDefault))
-                      : Icon(Icons.edit_outlined, color: context.appColors.iconDefault),
+                      ? Text('ยกเลิก', style: AppTextStyle.body1Medium.copyWith(color: context.appColors.textPrimary))
+                      : Icon(Icons.edit_outlined, color: context.appColors.iconPrimary),
                   onPressed: () => context.read<HistoryCubit>().toggleEditMode(),
                 );
               }
               return const SizedBox.shrink();
             },
           ),
-        ],
+        ], 
       ),
       body: const SafeArea(
         child: HistoryBody(),

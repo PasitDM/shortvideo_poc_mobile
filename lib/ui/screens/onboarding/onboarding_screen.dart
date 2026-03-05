@@ -56,7 +56,7 @@ class _OnboardingScreenViewState extends State<OnboardingScreenView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppPalette.neutralLevel00,
+      // backgroundColor: AppPalette.neutralLevel00,
       body: BlocBuilder<OnboardingScreenCubit, OnboardingScreenState>(
         builder: (context, state) {
           return Stack(
@@ -192,7 +192,7 @@ class _OnboardingScreenViewState extends State<OnboardingScreenView> {
       width: isActive ? 32 : 8,
       height: 8,
       decoration: BoxDecoration(
-        color: isActive ? context.appColors.buttonPrimary : context.appColors.backgroundThirdary,
+        color: isActive ? context.appColors.buttonPrimary : context.appColors.backgroundTertiary,
         borderRadius: BorderRadius.circular(100),
       ),
     );

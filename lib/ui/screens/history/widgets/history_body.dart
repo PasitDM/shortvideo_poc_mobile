@@ -97,8 +97,8 @@ class HistoryBody extends StatelessWidget {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: state.selectedItemIds.isEmpty
-                            ? context.appColors.buttonPrimaryDisable
-                            : context.appColors.backgroundError,
+                            ? context.appColors.backgroundSecondary
+                            : context.appColors.buttonError,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
                         minimumSize: const Size(double.infinity, 48),
                       ),

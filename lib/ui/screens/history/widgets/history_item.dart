@@ -39,7 +39,7 @@ class HistoryItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(4),
                         color: isSelected ? context.appColors.buttonPrimary : Colors.transparent,
                         border: Border.all(
-                          color: isSelected ? context.appColors.buttonPrimary : context.appColors.borderDefault,
+                          color: isSelected ? context.appColors.buttonPrimary : context.appColors.borderSecondary,
                           width: 1.5,
                         ),
                       ),
@@ -62,7 +62,7 @@ class HistoryItem extends StatelessWidget {
                   width: 84,
                   height: 112,
                   color: context.appColors.backgroundSecondary,
-                  child: Icon(Icons.image, color: context.appColors.iconDisable),
+                  child: Icon(Icons.image, color: context.appColors.iconTertiary),
                 ),
               ),
             ),
@@ -77,7 +77,7 @@ class HistoryItem extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: context.appColors.backgroundThirdary,
+                      color: context.appColors.backgroundTertiary,
                       borderRadius: BorderRadius.circular(100),
                     ),
                     child: Text(
@@ -93,14 +93,14 @@ class HistoryItem extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     text: TextSpan(
                       style: AppTextStyle.w700(14).copyWith(
-                        color: context.appColors.textDefault,
+                        color: context.appColors.textPrimary,
                         height: 24 / 14,
                       ),
                       children: [
                         TextSpan(text: item.title),
                         TextSpan(
                           text: item.prefixTitle,
-                          style: AppTextStyle.w700(14).copyWith(color: context.appColors.textDefault),
+                          style: AppTextStyle.w700(14).copyWith(color: context.appColors.textPrimary),
                         ),
                         TextSpan(text: '\n${item.suffixTitle}'),
                       ],

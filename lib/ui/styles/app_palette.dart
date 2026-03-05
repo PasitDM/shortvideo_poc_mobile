@@ -5,47 +5,33 @@ import 'dart:ui';
 class AppPalette {
   AppPalette._();
 
-  // Neutral Colors
-  static const Color neutralLevel00 = Color(0xFF121212); // Figma: System/Main
-  static const Color neutralLevel01 = Color(0xFF1E1E1E);
-  static const Color neutralLevel02 = Color(0xFF4F4F4F);
-  static const Color neutralLevel03 = Color(0xFF787878);
-  static const Color neutralLevel04 = Color(0xFFA1A1A1);
-  static const Color neutralLevel06 = Color(0xFFFAFAFA);
+  // Zinc Neutral Colors
+  static const Color zincLevel00 = Color(0xFF18181B); // Background/Primary
+  static const Color zincLevel01 = Color(0xFF27272A); // Background/Tertiary
+  static const Color zincLevel02 = Color(0xFF52525C); // Background/Secondary, Text/Tertiary, Border/Secondary, Icon/Tertiary
+  static const Color zincLevel03 = Color(0xFF9F9FA9); // Text/Secondary, Icon/Secondary
+  static const Color zincLevel04 = Color(0xFFE4E4E7); // Text/Primary, Icon/Primary, Background/white
 
-  // Error Colors
-  static const Color errorDefault = Color(0xFFF43F5E);
-  static const Color errorDark = Color(0xFF881337);
+  // Brand Colors (Bandflippy)
+  static const Color bandflippyPrimary = Color(
+    0xFF8869FC,
+  ); // Background/Brand-Primary, Text/Primary-Brand, Border/Primary, Button/Primary, Visual/Brand-Primary
+  static const Color bandflippyPrimary2 = Color(0xFF332B51); // Background/Brand-Secondary
+  static const Color bandflippySecondary = Color(
+    0xFFA965DA,
+  ); // Background/Brand-Secondary 2, Button/Default-Brand 2, Visual/Brand-Secondary
 
-  // Warning Colors
+  // Red / Error Colors
+  static const Color red400 = Color(0xFFFF6467); // Text/Error, Border/Error
+  static const Color red500 = Color(0xFFFB2C36); // Button/Error
+
+  // Warning Colors (not defined in Figma, kept for compatibility)
   static const Color warningDefault = Color(0xFFF97316);
   static const Color warningDark = Color(0xFF9A3412);
 
-  // Success Colors
+  // Success Colors (not defined in Figma, kept for compatibility)
   static const Color successDefault = Color(0xFF22C55E);
   static const Color successDark = Color(0xFF166534);
-
-  // Brand Colors
-  static const Color brandPrimaryDefault = Color(0xFF880185); // Figma: Action/Primary
-
-  // ============================================================================
-  // ADDITIONAL COLORS FOR LIGHT THEME
-  // ============================================================================
-
-  // Light Theme Backgrounds
-  static const Color lightBackground = Color(0xFFFFFFFF);
-  static const Color lightBackgroundSecondary = Color(0xFFF5F5F5);
-  static const Color lightBackgroundTertiary = Color(0xFFEEEEEE);
-
-  // Light Theme Text Colors
-  static const Color lightTextPrimary = Color(0xFF0D0D0D);
-  static const Color lightTextSecondary = Color(0xFF4F4F4F);
-  static const Color lightTextTertiary = Color(0xFF787878);
-  static const Color lightTextDisable = Color(0xFFA1A1A1);
-
-  // Light Theme Borders
-  static const Color lightBorder = Color(0xFFE0E0E0);
-  static const Color lightBorderFocus = Color(0xFF202020);
 
   // Additional Colors
   static const Color white = Color(0xFFFFFFFF);
